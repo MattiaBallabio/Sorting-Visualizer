@@ -1,0 +1,22 @@
+body {
+    font-family: "gg sans SemiBold Regular";
+}
+
+h1 {
+    font-family: "gg sans Bold";
+}
+
+input {
+    font-family: "gg sans SemiBold Regular";
+}
+
+button {
+    font-family: "gg sans SemiBold Regular"
+}
+
+#inputButton {
+    background-color: rgba(54, 162, 235, 1);
+    border: 0;
+    border-radius: 15px;
+    box-sizing: 2em;
+}
