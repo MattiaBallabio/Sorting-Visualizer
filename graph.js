@@ -1,17 +1,25 @@
+export function updateChart(numbers) {
+  if (chart) {
+    chart.data.labels = numbers;
+    chart.data.datasets[0].data = numbers;
+    chart.update();
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  let myChart = null;
+  let chart = null;
 
   document.getElementById("inputButton").addEventListener("click", function() {
     const numbersUnformatted = document.getElementById("numbers").value;
     const numbers = numbersUnformatted.trim().split(/\s+/).map(Number);
     console.log(numbers);
 
-    if (myChart) {
-      myChart.destroy();
+    if (chart) {
+      chart.destroy();
     }
 
-    const ctx = document.getElementById('myChart').getContext('2d');
-    myChart = new Chart(ctx, {
+    const ctx = document.getElementById('chart').getContext('2d');
+    chart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: numbers,
