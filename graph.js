@@ -1,3 +1,8 @@
+import { insertionSort } from "./algorithms.js";
+
+let chart = null;
+let numbers = []
+
 export function updateChart(numbers) {
   if (chart) {
     chart.data.labels = numbers;
@@ -6,12 +11,15 @@ export function updateChart(numbers) {
   }
 }
 
+function getNumber() {
+    const numbersUnformatted = document.getElementById("numbers").value;
+    return numbersUnformatted.trim().split(/\s+/).map(Number);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  let chart = null;
 
   document.getElementById("inputButton").addEventListener("click", function() {
-    const numbersUnformatted = document.getElementById("numbers").value;
-    const numbers = numbersUnformatted.trim().split(/\s+/).map(Number);
+    numbers = getNumber();
     console.log(numbers);
 
     if (chart) {
@@ -25,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         labels: numbers,
         datasets: [{
           data: numbers,
-          backgroundColor: 'rgba(54, 162, 235, 1)'
+          backgroundColor: "rgba(54, 162, 235, 1)"
         }]
       },
       options: {
@@ -34,7 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         scales: {
           y: { display: false },
-          x: { ticks: { font: "gg sans SemiBold Regular" }
+          x: { ticks: { font: "gg sans SemiBold Regular",
+                        color: "rgb(255, 255, 255)"
+                      },
+              grid: { tickColor: "rgb(255, 255, 255)",
+                      color: "rgb(255, 255, 255)"
+              }
           }
         }
       }
@@ -42,3 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.getElementById("sortButton").addEventListener("click", function() {
+  console.log("Start sorting");
+  insertionSort(numbers);
+});

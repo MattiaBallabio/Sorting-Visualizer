@@ -9,6 +9,7 @@ export function insertionSort(numbers) {
             numbers[j] = numbers[j - 1];
             numbers[j - 1] = temp;
         } 
+        console.log("Updating graph...")
         updateChart(numbers);
         i++;
     }
